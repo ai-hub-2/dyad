@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import ChatPage from "./pages/Chat";
+import HomePage from "./pages/Home";
+import SettingsPage from "./pages/Settings";
 import logoUrl from "assets/logo_transparent.png";
 
 export default function App() {
@@ -12,11 +14,18 @@ export default function App() {
               <img src={logoUrl} alt="Dyad" className="w-6 h-6" />
               <span className="text-sm font-semibold">Dyad</span>
             </Link>
+            <nav className="flex items-center gap-3 text-sm">
+              <Link to="/" className="opacity-90 hover:opacity-100">الرئيسية</Link>
+              <Link to="/chat" className="opacity-90 hover:opacity-100">الدردشة</Link>
+              <Link to="/settings" className="opacity-90 hover:opacity-100">الإعدادات</Link>
+            </nav>
           </div>
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<ChatPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
           </Routes>
         </main>
       </div>
