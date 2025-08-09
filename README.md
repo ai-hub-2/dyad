@@ -21,3 +21,21 @@ No sign-up required. Just download and go.
 **dyad** is open source (Apache 2.0-licensed).
 
 If you're interested in contributing to dyad, please read our [contributing](./CONTRIBUTING.md) doc.
+
+## 🌐 Website on Cloudflare Pages (real, production-ready)
+
+A production website is included under `website/` and can be deployed to Cloudflare Pages without placeholders.
+
+- Local dev:
+  - `cd website && npm i && npm run dev`
+- Build:
+  - `npm run build` (outputs to `website/dist`)
+- Cloudflare Pages:
+  - Project name: `dyad-website`
+  - Output directory: `website/dist`
+  - Add `_headers` and `_redirects` from `website/public` via Pages settings or keep them in the artifact root.
+- GitHub Actions:
+  - Workflow at `.github/workflows/pages.yml` builds and deploys on pushes to `main`.
+  - Requires secrets: `CF_API_TOKEN`, `CF_ACCOUNT_ID`.
+
+Download buttons fetch the latest real release assets from GitHub and render platform-specific links automatically.

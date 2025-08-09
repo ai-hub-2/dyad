@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --color-background: var(--docs-bg);
+  --color-foreground: var(--docs-fg);
+}
+
+:root{
+  --docs-bg: #0b0b0b;
+  --docs-fg: #e5e7eb;
+  --card: #0f0f10;
+  --border: #2a2a2b;
+}
+
+body{
+  font-family: var(--font-sans);
+  background: var(--docs-bg);
+  color: var(--docs-fg);
+}
+
+.bg-card{ background-color: var(--card); }
+.border-border{ border-color: var(--border); }
+
+/* Dense buttons and elements for mobile while keeping tap targets >= 40px */
+button, .btn{ min-height: 40px; }
