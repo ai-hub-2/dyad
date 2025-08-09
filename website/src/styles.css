@@ -13,6 +13,13 @@
   --border: #2a2a2b;
 }
 
+:root[data-theme="light"]{
+  --docs-bg: #ffffff;
+  --docs-fg: #0b0b0b;
+  --card: #f7f7f7;
+  --border: #e2e2e2;
+}
+
 body{
   font-family: var(--font-sans);
   background: var(--docs-bg);
@@ -22,5 +29,10 @@ body{
 .bg-card{ background-color: var(--card); }
 .border-border{ border-color: var(--border); }
 
-/* Dense buttons and elements for mobile while keeping tap targets >= 40px */
 button, .btn{ min-height: 40px; }
+
+/* Mobile drawer utilities (placeholder classes to be used as needed) */
+.drawer{ position: fixed; inset: 0 0 0 0; background: color-mix(in oklab, var(--docs-bg), transparent 20%); display:none; }
+.drawer.is-open{ display:block; }
+.drawer-panel{ position:absolute; inset:0 auto 0 0; width:min(86vw,320px); background: var(--card); border-right:1px solid var(--border); transform:translateX(-100%); transition:transform .2s ease; }
+.drawer.is-open .drawer-panel{ transform:translateX(0); }
