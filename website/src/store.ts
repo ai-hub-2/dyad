@@ -83,3 +83,24 @@ export async function addMessage(m: ChatMessage) {
     await d.put("threads", t);
   }
 }
+
+export async function clearAll() {
+  const d = await db();
+  await d.clear("messages");
+  await d.clear("threads");
+}
+
+export async function exportAll(): Promise<{ threads: ChatThread[]; messages: ChatMessage[] }> {
+  const d = await db();
+  const threads = await d.getAll("threads");
+  const messages = await d.getAll("messages");
+  return { threads, messages };
+}
+
+export async function importAll(payload: { threads: ChatThread[]; messages: ChatMessage[] }) {
+  const d = await db();
+  await d.clear("messages");
+  await d.clear("threads");
+  for (const t of payload.threads) await d.put("threads", t);
+  for (const m of payload.messages) await d.put("messages", m);
+}
