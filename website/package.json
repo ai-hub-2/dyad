@@ -14,7 +14,9 @@
     "vite": "^5.4.17"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0-rc.0",
     "idb": "^8.0.0",
+    "monaco-editor": "^0.52.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^6.26.2"
