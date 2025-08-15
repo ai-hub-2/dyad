@@ -43,8 +43,8 @@ jobs:
         if: !secrets.CLOUDFLARE_API_TOKEN || !secrets.CLOUDFLARE_ACCOUNT_ID
         run: |
           echo "Cloudflare Pages deployment skipped due to missing secrets:"
-          echo "- CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && 'SET' || 'MISSING' }}"
-          echo "- CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID != '' && 'SET' || 'MISSING' }}"
+          echo "- CLOUDFLARE_API_TOKEN: MISSING"
+          echo "- CLOUDFLARE_ACCOUNT_ID: MISSING"
           echo ""
           echo "To enable deployment, add these secrets in:"
           echo "Repository Settings → Secrets and variables → Actions"
