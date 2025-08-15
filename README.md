@@ -1,23 +1,92 @@
-# dyad
+# Dyad
 
-Dyad is a local, open-source AI app builder. It's fast, private and fully under your control — like Lovable, v0, or Bolt, but running right on your machine.
+My Electron application description
 
-![Image](https://github.com/user-attachments/assets/f6c83dfc-6ffd-4d32-93dd-4b9c46d17790)
+## 🚀 Available Scripts
 
-More info at: [http://dyad.sh/](http://dyad.sh/)
+### **Main App (Electron)**
+```bash
+npm start              # Start Electron dev server
+npm run package        # Build Electron app
+npm test               # Run tests
+npm run lint           # Run linting
+npm run make           # Create distributable packages
+```
 
-## 🚀 Features
+### **Mobile App (React Native)**
+```bash
+npm run mobile:install     # Install mobile dependencies
+npm run mobile:start       # Start Metro bundler
+npm run mobile:android     # Run on Android
+npm run mobile:ios         # Run on iOS
+npm run mobile:build:android # Build Android APK
+npm run mobile:bundle:android # Create Android bundle
+npm run mobile:clean:android  # Clean Android build
+```
 
-- ⚡️ **Local**: Fast, private and no lock-in.
-- 🛠 **Bring your own keys**: Use your own AI API keys with no vendor lock-in.
-- 🖥️ **Cross-platform**: Easy to run on Mac or Windows.
+### **Or use mobile directory directly:**
+```bash
+cd mobile
+npm start              # Start Metro bundler
+npm run android        # Run on Android
+npm run ios            # Run on iOS
+npm run build:android  # Build Android APK
+```
 
-## 📦 Download
+## 📱 Mobile App Features
 
-No sign-up required. Just download and go.
+- **Cross-platform**: Built with React Native for Android and iOS
+- **Theme System**: Dark/light mode with consistent design tokens
+- **Navigation**: Stack-based navigation between screens
+- **Performance Optimized**: Proguard, resource shrinking, and efficient rendering
 
-### [👉 Download for your platform](https://www.dyad.sh/#download)
+## 🏗️ Project Structure
 
-**dyad** is open source (Apache 2.0-licensed).
+```
+├── src/                 # Electron app source
+├── mobile/              # React Native mobile app
+│   ├── app/            # Mobile app source
+│   ├── android/        # Android configuration
+│   └── ios/            # iOS configuration
+└── package.json         # Main project configuration
+```
 
-If you're interested in contributing to dyad, please read our [contributing](./CONTRIBUTING.md) doc.
+## 🛠️ Development
+
+### Prerequisites
+- Node.js 20+
+- Electron development tools
+- React Native CLI (for mobile)
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
+
+### Setup
+1. Install dependencies: `npm install`
+2. Install mobile dependencies: `npm run mobile:install`
+3. Start development: `npm start` (Electron) or `npm run mobile:start` (Mobile)
+
+## 📦 Building
+
+### Electron App
+```bash
+npm run package  # Build Electron app
+npm run make     # Create distributable packages
+```
+
+### Mobile App
+```bash
+npm run mobile:build:android  # Build Android APK
+```
+
+## 🧪 Testing
+
+```bash
+npm test              # Run all tests
+npm run test:watch    # Run tests in watch mode
+npm run test:ui       # Run tests with UI
+npm run e2e           # Run end-to-end tests
+```
+
+## 📄 License
+
+MIT

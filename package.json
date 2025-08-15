@@ -35,7 +35,14 @@
     "extract-codebase": "ts-node scripts/extract-codebase.ts",
     "prepare": "husky install",
     "pre:e2e": "E2E_TEST_BUILD=true npm run package",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "mobile:install": "cd mobile && npm install",
+    "mobile:start": "cd mobile && npm start",
+    "mobile:android": "cd mobile && npm run android",
+    "mobile:ios": "cd mobile && npm run ios",
+    "mobile:build:android": "cd mobile && npm run build:android",
+    "mobile:bundle:android": "cd mobile && npm run bundle:android",
+    "mobile:clean:android": "cd mobile && npm run clean:android"
   },
   "keywords": [],
   "author": {
