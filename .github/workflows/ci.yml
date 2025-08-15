@@ -4,8 +4,18 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'mobile/**'
+      - '.github/workflows/android.yml'
+      - 'README.md'
+      - 'docs/**'
   pull_request:
     types: [opened, synchronize, reopened]
+    paths-ignore:
+      - 'mobile/**'
+      - '.github/workflows/android.yml'
+      - 'README.md'
+      - 'docs/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
