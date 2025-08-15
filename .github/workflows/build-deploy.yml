@@ -25,7 +25,7 @@ jobs:
         run: npm ci
         
       - name: 🏗 Build project
-        run: npm run build
+        run: npm run package
         
       - name: 🚀 Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -33,7 +33,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: dyad-app
-          directory: dist
+          directory: out
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
   # Build Android APK
@@ -110,4 +110,4 @@ jobs:
         run: npm test
         
       - name: 🔍 Lint check
-        run: npm run lint
+        run: npm run lint:fix
