@@ -1,0 +1,6 @@
+name = "dyad-web"
+compatibility_date = "2024-12-01"
+pages_build_output_dir = "website/dist"
+
+[vars]
+# You can define default vars here if needed

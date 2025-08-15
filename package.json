@@ -35,7 +35,9 @@
     "extract-codebase": "ts-node scripts/extract-codebase.ts",
     "prepare": "husky install",
     "pre:e2e": "E2E_TEST_BUILD=true npm run package",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "build": "npm --prefix website ci --no-audit --no-fund && npm --prefix website run build",
+    "preview": "npm --prefix website run preview"
   },
   "keywords": [],
   "author": {
