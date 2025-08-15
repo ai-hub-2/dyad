@@ -3,12 +3,10 @@ name: Android CI — Build & Release APK
 on:
   push:
     branches: [ main, multi-platform-transformation ]
-  pull_request:
-    branches: [ main ]
-  # إنشاء إصدار تلقائي عند دفع tag مثل v1.0.0
-  push:
     tags:
       - 'v*.*.*'
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -47,7 +45,7 @@ jobs:
 
       # اختياري: توليد keystore مؤقت إذا لم يتم وضع Secrets (لتجنّب فشل البناء)
       - name: 🔐 Prepare Keystore
-        if: ${{ !secrets.ANDROID_KEYSTORE_BASE64 }}
+        if: !secrets.ANDROID_KEYSTORE_BASE64
         working-directory: mobile/android/app
         run: |
           keytool -genkeypair -v -storetype JKS -keystore temp-release-key.jks -alias dyad -keyalg RSA -keysize 2048 -validity 10000 -storepass password -keypass password -dname "CN=CI,O=Dyad,C=US"
@@ -58,7 +56,7 @@ jobs:
 
       # في حالة وجود Secrets، نفك ترميز keystore ونمرر كلمات السر
       - name: 🔐 Decode Keystore from Secrets
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        if: secrets.ANDROID_KEYSTORE_BASE64
         working-directory: mobile/android/app
         run: |
           echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > release-key.jks
