@@ -3,12 +3,10 @@ name: Android CI — Build & Release APK
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  # إنشاء إصدار تلقائي عند دفع tag مثل v1.0.0
-  push:
     tags:
       - 'v*.*.*'
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -61,7 +59,7 @@ jobs:
         if: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
         working-directory: mobile/android/app
         run: |
-          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > release-key.jks
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > release-key.jks
           echo "ANDROID_KEYSTORE_FILE=$PWD/release-key.jks" >> $GITHUB_ENV
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
