@@ -95,6 +95,17 @@ typings/
 # Electron-Forge
 out/
 
+# Mobile App
+mobile/android/app/build/
+mobile/android/app/release/
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/*.keystore
+mobile/ios/Pods/
+mobile/ios/build/
+mobile/ios/DerivedData/
+mobile/*.jsbundle
+
 sqlite.db
 userData/
 .env.local
