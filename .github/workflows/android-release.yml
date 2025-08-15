@@ -43,9 +43,8 @@ jobs:
         working-directory: mobile/android
         run: chmod +x gradlew
 
-      # اختياري: توليد keystore مؤقت إذا لم يتم وضع Secrets (لتجنّب فشل البناء)
-      - name: 🔐 Prepare Keystore
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 == '' }}
+      # توليد keystore مؤقت دائماً (لتجنّب فشل البناء)
+      - name: 🔐 Generate Temporary Keystore
         working-directory: mobile/android/app
         run: |
           keytool -genkeypair -v -storetype JKS -keystore temp-release-key.jks -alias dyad -keyalg RSA -keysize 2048 -validity 10000 -storepass password -keypass password -dname "CN=CI,O=Dyad,C=US"
@@ -53,20 +52,6 @@ jobs:
           echo "ANDROID_KEYSTORE_PASSWORD=password" >> $GITHUB_ENV
           echo "ANDROID_KEY_ALIAS=dyad" >> $GITHUB_ENV
           echo "ANDROID_KEY_ALIAS_PASSWORD=password" >> $GITHUB_ENV
-
-      # في حالة وجود Secrets، نفك ترميز keystore ونمرر كلمات السر
-      - name: 🔐 Decode Keystore from Secrets
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
-        working-directory: mobile/android/app
-        run: |
-          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > release-key.jks
-          echo "ANDROID_KEYSTORE_FILE=$PWD/release-key.jks" >> $GITHUB_ENV
-
-      - name: 🔑 Export Signing Vars
-        run: |
-          echo "ANDROID_KEYSTORE_PASSWORD=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
-          echo "ANDROID_KEY_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }}" >> $GITHUB_ENV
-          echo "ANDROID_KEY_ALIAS_PASSWORD=${{ secrets.ANDROID_KEY_ALIAS_PASSWORD }}" >> $GITHUB_ENV
 
       - name: 🏗️ Build Release APK
         working-directory: mobile/android
